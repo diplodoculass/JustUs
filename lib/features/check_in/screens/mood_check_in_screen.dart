@@ -324,7 +324,7 @@ class _MoodCheckInScreenState extends ConsumerState<MoodCheckInScreen>
             ),
           ),
           Text(
-            '${'🔋' * mood.energyLevel}',
+            '🔋' * mood.energyLevel,
             style: const TextStyle(fontSize: 10),
           ),
         ],
