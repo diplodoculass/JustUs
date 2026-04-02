@@ -6,7 +6,6 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_spacing.dart';
 import '../../../core/theme/app_radius.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/constants/app_constants.dart';
 import '../../../core/extensions/context_extensions.dart';
 import '../../../features/auth/controllers/user_repository.dart';
 import '../../../features/home/controllers/couple_repository.dart';
@@ -328,55 +327,15 @@ class _ComposeEntrySheetState extends ConsumerState<_ComposeEntrySheet> {
             Text('New entry', style: AppTypography.headlineSmall),
             const SizedBox(height: AppSpacing.md),
 
-            // Mood selector
-            SizedBox(
-              height: 36,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: AppConstants.journalMoods.map((mood) {
-                  final isSelected = _selectedMood == mood;
-                  return GestureDetector(
-                    onTap: () => setState(() => _selectedMood = mood),
-                    child: Container(
-                      margin: const EdgeInsets.only(right: AppSpacing.sm),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppSpacing.smd,
-                      ),
-                      decoration: BoxDecoration(
-                        color: isSelected
-                            ? AppColors.accentPrimary.withValues(alpha: 0.15)
-                            : AppColors.backgroundElevated,
-                        borderRadius: AppRadius.borderRadiusPill,
-                        border: isSelected
-                            ? Border.all(color: AppColors.accentPrimary)
-                            : null,
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        mood,
-                        style: AppTypography.labelMedium.copyWith(
-                          color: isSelected
-                              ? AppColors.accentPrimary
-                              : AppColors.textSecondary,
-                        ),
-                      ),
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-
-            const SizedBox(height: AppSpacing.md),
-
-            // Content
+            // Content Input
             TextFormField(
               controller: _contentController,
-              maxLines: 6,
+              maxLines: 8,
               maxLength: 2000,
               autofocus: true,
               style: AppTypography.bodyLarge,
               decoration: InputDecoration(
-                hintText: 'Write something for your partner...',
+                hintText: "What's on your heart? Share your thoughts with your partner...",
                 hintStyle: AppTypography.bodyLarge.copyWith(
                   color: AppColors.textMuted,
                 ),
@@ -390,29 +349,56 @@ class _ComposeEntrySheetState extends ConsumerState<_ComposeEntrySheet> {
               ),
             ),
 
-            const SizedBox(height: AppSpacing.smd),
+            const SizedBox(height: AppSpacing.md),
 
-            // Private toggle
+            // Options Row
             Row(
               children: [
-                Switch.adaptive(
-                  value: _isPrivate,
-                  onChanged: (v) => setState(() => _isPrivate = v),
-                  activeTrackColor: AppColors.accentPrimary,
+                // Mood selector placeholder / simplified version
+                Expanded(
+                  child: DropdownButtonFormField<String>(
+                    value: _selectedMood,
+                    decoration: InputDecoration(
+                      hintText: 'Select mood',
+                      contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+                      filled: true,
+                      fillColor: AppColors.backgroundElevated,
+                      border: OutlineInputBorder(
+                        borderRadius: AppRadius.borderRadiusMd,
+                        borderSide: BorderSide.none,
+                      ),
+                    ),
+                    items: ['Happy', 'Grateful', 'Loved', 'Sad', 'Excited', 'Tired'].map((String mood) {
+                      return DropdownMenuItem<String>(
+                        value: mood,
+                        child: Text(mood, style: AppTypography.bodySmall),
+                      );
+                    }).toList(),
+                    onChanged: (val) => setState(() => _selectedMood = val),
+                  ),
                 ),
-                const SizedBox(width: AppSpacing.xs),
-                Text(
-                  'Keep this private',
-                  style: AppTypography.bodyMedium.copyWith(
-                    color: AppColors.textSecondary,
+                const SizedBox(width: AppSpacing.md),
+                // Privacy Toggle
+                TextButton.icon(
+                  onPressed: () => setState(() => _isPrivate = !_isPrivate),
+                  icon: Icon(
+                    _isPrivate ? Icons.lock_rounded : Icons.lock_open_rounded,
+                    size: 20,
+                    color: _isPrivate ? AppColors.accentPrimary : AppColors.textMuted,
+                  ),
+                  label: Text(
+                    _isPrivate ? 'Private' : 'Public',
+                    style: AppTypography.labelMedium.copyWith(
+                      color: _isPrivate ? AppColors.accentPrimary : AppColors.textMuted,
+                    ),
                   ),
                 ),
               ],
             ),
 
-            const SizedBox(height: AppSpacing.md),
+            const SizedBox(height: AppSpacing.xl),
 
-            // Submit
+            // Submit Button
             SizedBox(
               width: double.infinity,
               height: 52,
@@ -436,7 +422,7 @@ class _ComposeEntrySheetState extends ConsumerState<_ComposeEntrySheet> {
                             strokeWidth: 2.5,
                           ),
                         )
-                      : const Text('Share'),
+                      : const Text('Share Entry'),
                 ),
               ),
             ),
