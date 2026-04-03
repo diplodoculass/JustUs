@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "205236724512",
+    "project_id": "justus-couples-app",
+    "storage_bucket": "justus-couples-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:205236724512:android:75bd900134237973fa2d45",
+        "android_client_info": {
+          "package_name": "com.justus.just_us"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "205236724512-k138ecuf0farlpk4qd589ehmmlnf7i6d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.justus.just_us",
+            "certificate_hash": "7a503c814713774a0996ad55e00291f8dcb81f37"
+          }
+        },
+        {
+          "client_id": "205236724512-d6p3phl1v0i3jmoi3j8601med5bm5b44.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHJuTv7J2LyzGeH2l8WBQeCPBbrwOCnc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "205236724512-d6p3phl1v0i3jmoi3j8601med5bm5b44.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -357,7 +357,7 @@ class _ComposeEntrySheetState extends ConsumerState<_ComposeEntrySheet> {
                 // Mood selector placeholder / simplified version
                 Expanded(
                   child: DropdownButtonFormField<String>(
-                    value: _selectedMood,
+                    initialValue: _selectedMood,
                     decoration: InputDecoration(
                       hintText: 'Select mood',
                       contentPadding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
