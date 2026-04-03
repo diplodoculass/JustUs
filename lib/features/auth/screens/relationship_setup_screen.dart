@@ -173,6 +173,7 @@ class _RelationshipSetupScreenState
               hintText: 'Your name or nickname',
               prefixIcon: Icon(Icons.person_outline, color: AppColors.textMuted),
             ),
+            onChanged: (value) => setState(() {}),
           ),
           const Spacer(),
           SizedBox(
@@ -376,13 +377,14 @@ class _RelationshipSetupScreenState
                 hintText: '------',
                 counterText: '',
               ),
+              onChanged: (value) => setState(() {}),
             ),
             const SizedBox(height: AppSpacing.lg),
             SizedBox(
               width: double.infinity,
               height: 56,
               child: ElevatedButton(
-                onPressed: _isLoading ? null : _acceptCode,
+                onPressed: _isLoading || _codeController.text.trim().length != 6 ? null : _acceptCode,
                 child: _isLoading
                     ? const SizedBox(
                         width: 24,

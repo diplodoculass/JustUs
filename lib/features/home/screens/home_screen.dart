@@ -40,80 +40,110 @@ class HomeScreen extends ConsumerWidget {
               // ─── Streak / Relationship Card ──────────────────────────
               _buildRelationshipCard(coupleAsync),
 
-              const SizedBox(height: AppSpacing.xl),
+              if (coupleAsync.valueOrNull != null) ...[
+                const SizedBox(height: AppSpacing.xl),
 
-              // ─── Quick Actions ────────────────────────────────────────
-              Text('Today', style: AppTypography.titleLarge),
-              const SizedBox(height: AppSpacing.smd),
+                // ─── Quick Actions ────────────────────────────────────────
+                Text('Today', style: AppTypography.titleLarge),
+                const SizedBox(height: AppSpacing.smd),
 
-              _buildQuickActionCard(
-                icon: Icons.chat_bubble_outline_rounded,
-                title: 'Daily Question',
-                subtitle: 'A new question waiting for you both',
-                color: AppColors.accentPrimary,
-                onTap: () {},
-              ),
-              const SizedBox(height: AppSpacing.smd),
+                _buildQuickActionCard(
+                  icon: Icons.chat_bubble_outline_rounded,
+                  title: 'Daily Question',
+                  subtitle: 'A new question waiting for you both',
+                  color: AppColors.accentPrimary,
+                  onTap: () {},
+                ),
+                const SizedBox(height: AppSpacing.smd),
 
-              _buildQuickActionCard(
-                icon: Icons.mail_outline_rounded,
-                title: 'Love Letter',
-                subtitle: 'Write something sweet',
-                color: const Color(0xFFE8A0BF),
-                onTap: () {},
-              ),
-              const SizedBox(height: AppSpacing.smd),
+                _buildQuickActionCard(
+                  icon: Icons.mail_outline_rounded,
+                  title: 'Love Letter',
+                  subtitle: 'Write something sweet',
+                  color: const Color(0xFFE8A0BF),
+                  onTap: () {},
+                ),
+                const SizedBox(height: AppSpacing.smd),
 
-              _buildQuickActionCard(
-                icon: Icons.emoji_emotions_outlined,
-                title: 'Mood Check-In',
-                subtitle: "How are you feeling today?",
-                color: const Color(0xFF81C784),
-                onTap: () {},
-              ),
+                _buildQuickActionCard(
+                  icon: Icons.emoji_emotions_outlined,
+                  title: 'Mood Check-In',
+                  subtitle: "How are you feeling today?",
+                  color: const Color(0xFF81C784),
+                  onTap: () {},
+                ),
 
-              const SizedBox(height: AppSpacing.xl),
+                const SizedBox(height: AppSpacing.xl),
 
-              // ─── Features Grid ────────────────────────────────────────
-              Text('Explore', style: AppTypography.titleLarge),
-              const SizedBox(height: AppSpacing.smd),
+                // ─── Features Grid ────────────────────────────────────────
+                Text('Explore', style: AppTypography.titleLarge),
+                const SizedBox(height: AppSpacing.smd),
 
-              GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: AppSpacing.smd,
-                crossAxisSpacing: AppSpacing.smd,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                childAspectRatio: 1.3,
-                children: [
-                  _buildFeatureTile(
-                    icon: Icons.auto_stories_outlined,
-                    label: 'Journal',
-                    color: const Color(0xFFBB86FC),
-                    onTap: () {},
+                GridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: AppSpacing.smd,
+                  crossAxisSpacing: AppSpacing.smd,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  childAspectRatio: 1.3,
+                  children: [
+                    _buildFeatureTile(
+                      icon: Icons.auto_stories_outlined,
+                      label: 'Journal',
+                      color: const Color(0xFFBB86FC),
+                      onTap: () {},
+                    ),
+                    _buildFeatureTile(
+                      icon: Icons.sports_esports_outlined,
+                      label: 'Games',
+                      color: const Color(0xFFFFAB40),
+                      onTap: () {},
+                    ),
+                    _buildFeatureTile(
+                      icon: Icons.timeline_outlined,
+                      label: 'Timeline',
+                      color: const Color(0xFF4FC3F7),
+                      onTap: () {},
+                    ),
+                    _buildFeatureTile(
+                      icon: Icons.photo_library_outlined,
+                      label: 'Gallery',
+                      color: const Color(0xFFAED581),
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: AppSpacing.xxl),
+              ] else ...[
+                const SizedBox(height: AppSpacing.xl * 2),
+                Center(
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.favorite_border_rounded,
+                        size: 48,
+                        color: AppColors.textMuted.withValues(alpha: 0.5),
+                      ),
+                      const SizedBox(height: AppSpacing.md),
+                      Text(
+                        'Not paired with a partner yet',
+                        style: AppTypography.titleMedium.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                      const SizedBox(height: AppSpacing.sm),
+                      Text(
+                        'Pair up to unlock features',
+                        style: AppTypography.bodySmall.copyWith(
+                          color: AppColors.textMuted,
+                        ),
+                      ),
+                    ],
                   ),
-                  _buildFeatureTile(
-                    icon: Icons.sports_esports_outlined,
-                    label: 'Games',
-                    color: const Color(0xFFFFAB40),
-                    onTap: () {},
-                  ),
-                  _buildFeatureTile(
-                    icon: Icons.timeline_outlined,
-                    label: 'Timeline',
-                    color: const Color(0xFF4FC3F7),
-                    onTap: () {},
-                  ),
-                  _buildFeatureTile(
-                    icon: Icons.photo_library_outlined,
-                    label: 'Gallery',
-                    color: const Color(0xFFAED581),
-                    onTap: () {},
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: AppSpacing.xxl),
+                ),
+                const SizedBox(height: AppSpacing.xxl),
+              ],
             ],
           ),
         ),
