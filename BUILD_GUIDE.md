@@ -40,24 +40,20 @@ storeFile=upload-keystore.jks
 ---
 
 ## 3. Automated Releases (GitHub Actions)
-The project is configured to automatically build and release a signed APK every time you push a **version tag**.
+The project is configured to automatically build and publish APKs to **GitHub Releases**.
 
-### Setup GitHub Secrets
-To make the automated release work, go to **Settings > Secrets and variables > Actions** in your GitHub repo and add:
-
-| Secret Name | Value |
-| :--- | :--- |
-| `KEYSTORE_BASE64` | The output of `base64 -w 0 android/app/upload-keystore.jks` |
-| `KEYSTORE_PASSWORD` | Your keystore password |
-| `KEY_ALIAS` | `upload` |
-| `KEY_PASSWORD` | Your key password |
+### Release Triggers
+The workflow supports two trigger styles:
+1. **Tag release (stable):** pushing a tag like `v1.0.1` creates a standard release.
+2. **Manual release (pre-release):** running the workflow from the **Actions** tab creates a pre-release build.
 
 ### How to trigger a Release
 1. Update `version` in `pubspec.yaml` (e.g., `1.0.1+2`).
 2. Commit and push your changes.
-3. Push a tag:
+3. Push a tag for a stable release:
    ```bash
    git tag v1.0.1
    git push origin v1.0.1
    ```
-4. Check the **Actions** tab on GitHub — once finished, your APK will be under the **Releases** section.
+4. Or run **Build and Release APK** manually from the **Actions** tab for a pre-release.
+5. After the workflow completes, APK files will be attached under **Releases**.

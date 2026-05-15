@@ -4,8 +4,8 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_radius.dart';
 import '../../core/theme/app_spacing.dart';
 
-/// Styled card matching the Stitch design system.
-/// Uses tonal shifts instead of borders to define boundaries.
+/// Styled card for the playful app theme.
+/// Uses soft borders and candy-colored shadows.
 class AppCard extends StatelessWidget {
   final Widget child;
   final EdgeInsets? padding;
@@ -32,6 +32,16 @@ class AppCard extends StatelessWidget {
         color: gradient == null ? (color ?? AppColors.backgroundSurface) : null,
         gradient: gradient,
         borderRadius: borderRadius ?? AppRadius.borderRadiusLg,
+        border: Border.all(
+          color: AppColors.outlineVariant,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.accentPrimary.withValues(alpha: 0.08),
+            blurRadius: 14,
+            offset: const Offset(0, 6),
+          ),
+        ],
       ),
       child: child,
     );

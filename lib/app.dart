@@ -15,7 +15,7 @@ class JustUsApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'JustUs',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.darkTheme,
+      theme: AppTheme.playfulTheme,
       routerConfig: router,
     );
   }
