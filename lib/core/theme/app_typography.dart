@@ -3,146 +3,109 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 
-/// Typography scale matching the Stitch design system.
-///
-/// Editorial Pair:
-/// - **Manrope** — Display & Headlines (geometric, premium authority)
-/// - **Inter** — Body & UI text (readable, invisible neutrality)
+/// Typography tuned for a softer, friendlier look.
 class AppTypography {
   AppTypography._();
 
-  // ─── Display (Manrope) ──────────────────────────────────────────────
-
-  /// Display Large — Celebratory moments, hero greetings
-  /// 36px, Bold (700), tracking -0.5
-  static TextStyle get displayLarge => GoogleFonts.manrope(
+  // ─── Display (Baloo 2) ───────────────────────────────────────────────
+  static TextStyle get displayLarge => GoogleFonts.baloo2(
     fontSize: 36,
     fontWeight: FontWeight.w700,
-    letterSpacing: -0.5,
+    letterSpacing: -0.2,
+    height: 1.1,
+    color: AppColors.textPrimary,
+  );
+
+  static TextStyle get displayMedium => GoogleFonts.baloo2(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+    letterSpacing: -0.1,
     height: 1.15,
     color: AppColors.textPrimary,
   );
 
-  /// Display Medium — Meaningful personal moments
-  /// 32px, Bold (700), tracking -0.25
-  static TextStyle get displayMedium => GoogleFonts.manrope(
-    fontSize: 32,
-    fontWeight: FontWeight.w700,
-    letterSpacing: -0.25,
+  static TextStyle get displaySmall => GoogleFonts.baloo2(
+    fontSize: 28,
+    fontWeight: FontWeight.w600,
     height: 1.2,
     color: AppColors.textPrimary,
   );
 
-  /// Display Small — Streak numbers, key stats
-  /// 28px, SemiBold (600)
-  static TextStyle get displaySmall => GoogleFonts.manrope(
-    fontSize: 28,
-    fontWeight: FontWeight.w600,
-    height: 1.25,
-    color: AppColors.textPrimary,
-  );
-
-  // ─── Headline (Manrope) ─────────────────────────────────────────────
-
-  /// Headline Large — Screen titles
-  /// 24px, SemiBold (600)
-  static TextStyle get headlineLarge => GoogleFonts.manrope(
+  // ─── Headline (Baloo 2) ──────────────────────────────────────────────
+  static TextStyle get headlineLarge => GoogleFonts.baloo2(
     fontSize: 24,
     fontWeight: FontWeight.w600,
     height: 1.3,
     color: AppColors.textPrimary,
   );
 
-  /// Headline Medium — Section titles
-  /// 20px, SemiBold (600)
-  static TextStyle get headlineMedium => GoogleFonts.manrope(
+  static TextStyle get headlineMedium => GoogleFonts.baloo2(
     fontSize: 20,
     fontWeight: FontWeight.w600,
     height: 1.35,
     color: AppColors.textPrimary,
   );
 
-  /// Headline Small — Sub-section titles
-  /// 18px, Medium (500)
-  static TextStyle get headlineSmall => GoogleFonts.manrope(
+  static TextStyle get headlineSmall => GoogleFonts.baloo2(
     fontSize: 18,
     fontWeight: FontWeight.w500,
     height: 1.4,
     color: AppColors.textPrimary,
   );
 
-  // ─── Title (Inter) ──────────────────────────────────────────────────
-
-  /// Title Large — Card titles, list headers
-  /// 18px, SemiBold (600)
-  static TextStyle get titleLarge => GoogleFonts.inter(
+  // ─── Title (Nunito) ──────────────────────────────────────────────────
+  static TextStyle get titleLarge => GoogleFonts.nunito(
     fontSize: 18,
     fontWeight: FontWeight.w600,
     height: 1.4,
     color: AppColors.textPrimary,
   );
 
-  /// Title Medium — Secondary titles
-  /// 16px, SemiBold (600)
-  static TextStyle get titleMedium => GoogleFonts.inter(
+  static TextStyle get titleMedium => GoogleFonts.nunito(
     fontSize: 16,
     fontWeight: FontWeight.w600,
     height: 1.45,
     color: AppColors.textPrimary,
   );
 
-  /// Title Small — Tertiary titles, button labels
-  /// 14px, SemiBold (600)
-  static TextStyle get titleSmall => GoogleFonts.inter(
+  static TextStyle get titleSmall => GoogleFonts.nunito(
     fontSize: 14,
     fontWeight: FontWeight.w600,
     height: 1.45,
     color: AppColors.textPrimary,
   );
 
-  // ─── Body (Inter) ───────────────────────────────────────────────────
-
-  /// Body Large — Journal entries, personal messages
-  /// 16px, Regular (400)
-  static TextStyle get bodyLarge => GoogleFonts.inter(
+  // ─── Body (Nunito) ───────────────────────────────────────────────────
+  static TextStyle get bodyLarge => GoogleFonts.nunito(
     fontSize: 16,
     fontWeight: FontWeight.w400,
     height: 1.55,
     color: AppColors.textPrimary,
   );
 
-  /// Body Medium — Standard content text
-  /// 14px, Regular (400)
-  static TextStyle get bodyMedium => GoogleFonts.inter(
+  static TextStyle get bodyMedium => GoogleFonts.nunito(
     fontSize: 14,
     fontWeight: FontWeight.w400,
     height: 1.5,
     color: AppColors.textPrimary,
   );
 
-  /// Body Small — Secondary content
-  /// 12px, Regular (400)
-  static TextStyle get bodySmall => GoogleFonts.inter(
+  static TextStyle get bodySmall => GoogleFonts.nunito(
     fontSize: 12,
     fontWeight: FontWeight.w400,
     height: 1.5,
     color: AppColors.textSecondary,
   );
 
-  // ─── Label (Inter) ──────────────────────────────────────────────────
-
-  /// Label Large — Prominent labels
-  /// 14px, Medium (500)
-  static TextStyle get labelLarge => GoogleFonts.inter(
+  // ─── Label (Nunito) ──────────────────────────────────────────────────
+  static TextStyle get labelLarge => GoogleFonts.nunito(
     fontSize: 14,
     fontWeight: FontWeight.w500,
     height: 1.4,
     color: AppColors.textPrimary,
   );
 
-  /// Label Medium — Standard labels
-  /// 12px, Medium (500)
-  static TextStyle get labelMedium => GoogleFonts.inter(
+  static TextStyle get labelMedium => GoogleFonts.nunito(
     fontSize: 12,
     fontWeight: FontWeight.w500,
     height: 1.4,
@@ -150,13 +113,11 @@ class AppTypography {
     color: AppColors.textSecondary,
   );
 
-  /// Label Small — Metadata, timestamps, architectural feel
-  /// 11px, Medium (500), tracking 0.5px
-  static TextStyle get labelSmall => GoogleFonts.inter(
+  static TextStyle get labelSmall => GoogleFonts.nunito(
     fontSize: 11,
     fontWeight: FontWeight.w500,
     height: 1.4,
-    letterSpacing: 0.5,
+    letterSpacing: 0.3,
     color: AppColors.textMuted,
   );
 
